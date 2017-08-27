@@ -1,19 +1,18 @@
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @blog.name %>
-</p>
+<div class="row">
+  <div class="col-md-9">
+    <%= image_tag(@blog.picture_url, width: '80%') if @blog.picture.present? %>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @blog.description %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag(@blog.picture_url, width: 600) if @blog.picture.present? %>
-</p>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+  <div class="col-md-3">
+    <p><b>Title: </b><%= @blog.name %></p>
+    <p><b>Description: </b><%= @blog.description %></p>
+    <p>
+      <%= link_to 'Edit', edit_blog_path(@blog) %> |
+      <%= link_to 'Destroy', @blog, data: { confirm: 'Are you sure?' }, method: :delete %> |
+      <%= link_to 'Back', blogs_path %>
+    </p>
+  </div>
+</div>
